@@ -36,6 +36,12 @@ If you prefer to run the application directly with Go, follow these steps:
 
 To run tests, execute `go test` from the root directory of the project. Currently, the `TestGetDataForLine` test will fail due to the need for replacing the `mockResponse` with the actual content present on the specified line using the `m` parameter.
 
+### Docker Compose testing
+The Docker image was tested using the Docker Compose configuration with resource constraints set to **1.5 GB** of RAM and **1 CPU core**. Below is the screenshot of the test result:
+
+The test was successful, demonstrating that the Docker image runs within the specified resource constraints without any issues. This ensures that the application can be deployed in environments with limited resources while maintaining stability and performance.
+
+
 ## File Streaming Optimization
 
 #### Purpose:
