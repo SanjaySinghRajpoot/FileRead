@@ -3,6 +3,7 @@ package controller
 import (
 	"bufio"
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 
@@ -26,7 +27,9 @@ func GetData(ctx *gin.Context) {
 
 	file, err := os.Open(filePath)
 	if err != nil {
-		ctx.String(500, "Failed to open file")
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to open file - " + err.Error(),
+		})
 		return
 	}
 	defer file.Close()
@@ -35,7 +38,9 @@ func GetData(ctx *gin.Context) {
 
 		lineNumber, err := strconv.Atoi(m)
 		if err != nil || lineNumber <= 0 {
-			ctx.String(400, "Invalid line number")
+			ctx.JSON(http.StatusBadRequest, gin.H{
+				"error": "Invalid line Number - " + err.Error(),
+			})
 			return
 		}
 
@@ -51,18 +56,22 @@ func GetData(ctx *gin.Context) {
 			currentLineNumber++
 		}
 		if err := scanner.Err(); err != nil {
-			ctx.String(500, "Failed to read file")
+			ctx.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Failed to read the file - " + err.Error(),
+			})
 			return
 		}
 
 		// If the line number is greater than the number of lines in the file, return not found
 		if line == "" {
-			ctx.String(404, "Line not found")
+			ctx.JSON(http.StatusNotFound, gin.H{
+				"error": "line not found - " + err.Error(),
+			})
 			return
 		}
 
 		// Send the line as a response
-		ctx.String(200, line)
+		ctx.JSON(http.StatusOK, line)
 		return
 	}
 
@@ -73,8 +82,9 @@ func GetData(ctx *gin.Context) {
 	// This will stream the file in chunks instead of loading it into memory
 	_, err = reader.WriteTo(ctx.Writer)
 	if err != nil {
-		ctx.String(500, err.Error())
-		return
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Internal Server Error - " + err.Error(),
+		})
 	}
 
 	ctx.String(200, "")
