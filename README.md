@@ -3,10 +3,10 @@
 FileRead is a web application built with Go (Golang) using the Gin web framework. It provides functionalities to serve files, display a welcome message. This README provides an overview of the project structure and instructions for setup and usage.
 
 
-## Installtion
+## Installation
 
 
-1. Run the following command to start the Docker container:
+1. Run the following command from the root directory to start the Docker container:
 
 ```bash
 docker-compose up
@@ -28,6 +28,13 @@ If you prefer to run the application directly with Go, follow these steps:
 
     4. Your application will be accessible at http://localhost:8080
 
+3. After completing the installation, testing the `/data?n={file_name}&m={line_number}` endpoint requires adding a text file in the `tmp/data` directory. The file should be named in the format `{file_name}.txt`, where `{file_name}` represents the file number. 
+
+- For example, if you want to test with file number 1, the file should be named `1.txt`. Ensure the text file contains content to read, and then make a request to the `/data` endpoint with the appropriate query parameters (`n` for the file name and `m` for the line number). This will allow you to verify the functionality of the endpoint by retrieving the specified line from the text file.
+
+### Testing
+
+To run tests, execute `go test` from the root directory of the project. Currently, the `TestGetDataForLine` test will fail due to the need for replacing the `mockResponse` with the actual content present on the specified line using the `m` parameter.
 
 ### File Streaming Optimization
 
