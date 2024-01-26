@@ -9,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Get all Users from the Database
 func GetData(ctx *gin.Context) {
 	n := ctx.Query("n")
 	m := ctx.Query("m")
@@ -34,7 +33,7 @@ func GetData(ctx *gin.Context) {
 			return
 		}
 
-		// Create a scanner to read the file line by line
+		// scanner to read the file line by line
 		scanner := bufio.NewScanner(file)
 		line := ""
 		currentLineNumber := 1
@@ -58,6 +57,7 @@ func GetData(ctx *gin.Context) {
 
 		// Send the line as a response
 		ctx.String(200, line)
+		return
 	}
 
 	// Wrap the file reader with a buffered reader for more efficient reading
