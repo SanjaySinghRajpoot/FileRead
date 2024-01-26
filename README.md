@@ -32,11 +32,11 @@ If you prefer to run the application directly with Go, follow these steps:
 
 - For example, if you want to test with file number 1, the file should be named `1.txt`. Ensure the text file contains content to read, and then make a request to the `/data` endpoint with the appropriate query parameters (`n` for the file name and `m` for the line number). This will allow you to verify the functionality of the endpoint by retrieving the specified line from the text file.
 
-### Testing
+## Testing
 
 To run tests, execute `go test` from the root directory of the project. Currently, the `TestGetDataForLine` test will fail due to the need for replacing the `mockResponse` with the actual content present on the specified line using the `m` parameter.
 
-### File Streaming Optimization
+## File Streaming Optimization
 
 #### Purpose:
 The optimization aims to enhance the efficiency and simplicity of streaming entire files in a web application developed using the Gin web framework in Go.
