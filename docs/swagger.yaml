@@ -1,0 +1,7 @@
+  /data:
+    get:
+      description: Returns the File Content or the desired line.
+      produces:
+      - application/json
+      responses: "200"
+      summary: Get File data for a given param

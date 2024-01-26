@@ -76,6 +76,7 @@ func GetData(ctx *gin.Context) {
 		return
 	}
 
+	// File Streaming Optimization more info in README.md
 	ctx.Header("Content-Disposition", "attachment; filename="+n+".txt")
 	ctx.Header("Content-Type", "text/plain")
 	ctx.File(filePath)
