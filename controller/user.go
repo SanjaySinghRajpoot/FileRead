@@ -9,6 +9,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary 	Get File data for a given param
+// @Param		n path string true "file name"
+// @Description Returns the File Content or the desired line
+// @Produce     application/json
+// @Success     200 {string} string  "ok"
+// @Router      /data?n={file_name}&m={line_number} [get]
 func GetData(ctx *gin.Context) {
 	n := ctx.Query("n")
 	m := ctx.Query("m")
@@ -60,7 +66,7 @@ func GetData(ctx *gin.Context) {
 		return
 	}
 
-	// Wrap the file reader with a buffered reader for more efficient reading
+	// Wrapping the file reader with a buffered reader for more efficient reading
 	reader := bufio.NewReader(file)
 
 	// Copy the file to the response writer using bufio.Writer
@@ -71,8 +77,6 @@ func GetData(ctx *gin.Context) {
 		return
 	}
 
-	// Send the file content as a response
 	ctx.String(200, "")
 	return
-
 }
