@@ -28,7 +28,7 @@ If you prefer to run the application directly with Go, follow these steps:
 
     4. Your application will be accessible at http://localhost:8080
 
-3. After completing the installation, testing the `/data?n={file_name}&m={line_number}` endpoint requires adding a text file in the `tmp/data` directory. The file should be named in the format `{file_name}.txt`, where `{file_name}` represents the file number. 
+3. After completing the installation, running the `/data?n={file_name}&m={line_number}` endpoint requires adding a text file in the `tmp/data` directory. The file should be named in the format `{file_name}.txt`, where `{file_name}` represents the file number. A sample `1.txt` file is added in the repo, please add more file in the same folder for testing. 
 
 - For example, if you want to test with file number 1, the file should be named `1.txt`. Ensure the text file contains content to read, and then make a request to the `/data` endpoint with the appropriate query parameters (`n` for the file name and `m` for the line number). This will allow you to verify the functionality of the endpoint by retrieving the specified line from the text file.
 
