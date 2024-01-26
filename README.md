@@ -40,6 +40,7 @@ To run tests, execute `go test` from the root directory of the project. Currentl
 The Docker image was tested using the Docker Compose configuration with resource constraints set to **1.5 GB** of RAM and **1 CPU core**. Below is the screenshot of the test result:
 
 The test was successful, demonstrating that the Docker image runs within the specified resource constraints without any issues. This ensures that the application can be deployed in environments with limited resources while maintaining stability and performance.
+![Screenshot from 2024-01-26 16-12-19](https://github.com/SanjaySinghRajpoot/FileRead/assets/67458417/2cd6e1b1-e99b-4bf6-81b1-4d144f812f7e)
 
 
 ## File Streaming Optimization
